@@ -1,0 +1,50 @@
+カウンター
+～App.js～
+import React, {Component} from 'react';
+import './App.css';
+
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      msg: "count Start!",
+      counter :0,
+    }
+    this.doAction = this.doAction.bind(this)
+  }
+
+  doAction(event){
+    this.setState({
+      counter: this.state.counter + 1,
+      msg: '*** count: ' + this.state.counter + ' ***'
+    })
+  }
+
+  render(){
+    return <div>
+      <h1 className='bg-primary text-white display-4'>React</h1>
+      <div className='container'>
+        <p className='subtitle'>Count number.</p>
+        <div className='alert alert-warning text-center'>
+          <p className='h5 mb-4'>{this.state.msg}</p>
+          <button className='btn btn-primary' onClick={this.doAction}>Click</button>
+        </div>
+      </div>
+    </div>
+  }
+}
+
+export default App
+
+～index.js～
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
